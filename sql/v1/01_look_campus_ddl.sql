@@ -1,6 +1,6 @@
-if not exists (select 1 from INFORMATION_SCHEMA.TABLES t where t.TABLE_NAME = 'look_campus' and t.TABLE_SCHEMA = 'horse')
+if not exists (select 1 from INFORMATION_SCHEMA.TABLES t where t.TABLE_NAME = 'look_campus' and t.TABLE_SCHEMA = 'campus')
 begin
-	create table horse.look_campus(
+	create table campus.look_campus(
 		id int not null,
 		cd varchar(10) not null,
 		name varchar(20) not null,
