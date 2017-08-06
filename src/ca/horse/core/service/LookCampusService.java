@@ -18,6 +18,7 @@ import ca.horse.dao.LookCampusDAO;
 public class LookCampusService {
 	@Autowired private LookCampusDAO lookCampusDAO;
 	
+	//http://localhost:8080/Horse2/service/lookcampus/1
 	@GetMapping("/{id}")
 	public ResponseEntity<LookCampus> readOne(
 			@PathVariable("id") Integer id){

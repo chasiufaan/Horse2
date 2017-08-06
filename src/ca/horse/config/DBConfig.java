@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource("classpath:/resources/horse.properties")
+@PropertySource("classpath:resources/horse.properties")
 public class DBConfig {
 	@Autowired private Environment env;
 	
