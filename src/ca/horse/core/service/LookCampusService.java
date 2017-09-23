@@ -1,5 +1,6 @@
 package ca.horse.core.service;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -10,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -73,6 +76,27 @@ public class LookCampusService {
 			return new ResponseEntity<List<LookCampus>>(lookCampuses, HttpStatus.OK);
 		}
 		
+	}
+	
+	/**
+	 * endpoint for updating a campus definition.
+	 * response body must contain an existing campus def with and id defined
+	 * 
+	 * @param lookCampus
+	 * @return
+	 */
+	@SuppressWarnings("rawtypes")
+	@PutMapping("")
+	public ResponseEntity update(@RequestBody LookCampus lookCampus){
+		//validation(s)
+		if(lookCampus == null || lookCampus.getId() == null) {
+			return new ResponseEntity<String>("Inappropriate response body", HttpStatus.BAD_REQUEST);
+		}
+		
+		//update and return updated campus def
+		LookCampus updatedLookCampus = lookCampusDAO.save(lookCampus);
+		return new ResponseEntity<LookCampus>(updatedLookCampus, HttpStatus.OK);
+			
 	}
 	
 }

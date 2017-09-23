@@ -50,9 +50,16 @@ public class LookCampusDAOImpl implements LookCampusDAO{
 		return (List<LookCampus>) criteria.list();
 	}
 	
+	
+	
 	private String getLikeText(String text) {
 		StringBuilder sb = new StringBuilder();
 		return sb.append("%").append(text).append("%").toString();
+	}
+
+	@Override
+	public LookCampus save(LookCampus lookCampus) {
+		return (LookCampus) getSession().merge(lookCampus);
 	}
 
 }
